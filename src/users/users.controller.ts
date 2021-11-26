@@ -2,13 +2,13 @@ import { Controller, Post, Body, Get, UseGuards, UsePipes, Patch } from '@nestjs
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import {ApiOperation, ApiResponse, ApiTags} from '@nestjs/swagger';
-import {User} from './users.model';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import {RolesGuard} from "../auth/roles.guard";
 import { Roles } from 'src/auth/roles-auth.decorators';
 import { AddRoleDto } from './dto/add-role.dto';
 import { BanUserDto } from './dto/ban-user.dto';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
+import { UserEntity } from './user.entity';
 
 @ApiTags('Users')
 @Controller('users')
@@ -16,7 +16,7 @@ export class UsersController {
     constructor(private userService: UsersService) {}
 
     @ApiOperation({summary: 'Creating a user'})
-    @ApiResponse({status: 200, type: User})
+    @ApiResponse({status: 200, type: UserEntity})
     @UsePipes(ValidationPipe)
     @Post()
     create(@Body() userDto: CreateUserDto) {
@@ -24,7 +24,7 @@ export class UsersController {
     }
     
     @ApiOperation({summary: 'Updating a user'})
-    @ApiResponse({status: 201, type: User})
+    @ApiResponse({status: 201, type: UserEntity})
     @UsePipes(ValidationPipe)
     @Patch()
     update(@Body() userDto: CreateUserDto) {
@@ -33,7 +33,7 @@ export class UsersController {
 
 
     @ApiOperation({summary: 'Receiving list of all users'})
-    @ApiResponse({status: 200, type: [User]})
+    @ApiResponse({status: 200, type: [UserEntity]})
     //@UseGuards(JwtAuthGuard)
     @Roles('ADMIN')
     @UseGuards(RolesGuard)

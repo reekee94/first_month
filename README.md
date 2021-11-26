@@ -1,11 +1,12 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
 ## Installation
 
 ```bash
 $ npm install
+npm typeorm:cli
+npm typeorm
+
 ```
 
 ## Running the app
@@ -29,6 +30,3 @@ $ npm run test
 
 # e2e tests
 $ npm run test:e2e
-
-# test coverage
-$ npm run test:cov

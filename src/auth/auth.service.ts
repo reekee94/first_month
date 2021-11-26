@@ -3,7 +3,6 @@ import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import *  as bcrypt from 'bcryptjs';
-import { User } from 'src/users/users.model';
 import { UserEntity } from 'src/users/user.entity';
 
 @Injectable()
@@ -29,7 +28,7 @@ export class AuthService {
         return this.generateToken(user)
     }
 
-    private async generateToken(user: UserEntity | User) {
+    private async generateToken(user: UserEntity) {
         const payload = {email: user.email, id: user.id, roles: user.roles};
         return {
             token: this.jwtService.sign(payload),

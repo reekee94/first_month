@@ -1,6 +1,4 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { User } from "../users/users.model";
 import {CreateUserDto} from "../users/dto/create-user.dto";
 import { RolesService } from 'src/roles/roles.service';
 import { BanUserDto } from '../users/dto/ban-user.dto';

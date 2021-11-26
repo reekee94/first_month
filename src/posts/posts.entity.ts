@@ -22,7 +22,4 @@ export class PostEntity {
 
     @Column({ type: "bytea", "nullable": true })
     imageData: Buffer
-
-    // @OneToMany( () => UserToRole, user => user.posts)
-    // author: UserEntity[]
 }
