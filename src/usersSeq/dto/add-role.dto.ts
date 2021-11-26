@@ -5,5 +5,5 @@ export class AddRoleDto {
     readonly value: string;
 
     @IsString({message: 'Needs to be a string'})
-    readonly userEmail: string;
+    readonly userId: number;
 }

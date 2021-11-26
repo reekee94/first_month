@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, UseGuards, UsePipes, Patch } from '@nestjs/common';
+import { Controller, Post, Body, Get, UseGuards, UsePipes } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import {ApiOperation, ApiResponse, ApiTags} from '@nestjs/swagger';
@@ -11,7 +11,7 @@ import { BanUserDto } from './dto/ban-user.dto';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 
 @ApiTags('Users')
-@Controller('users')
+@Controller('seq/users')
 export class UsersController {
     constructor(private userService: UsersService) {}
 
@@ -22,15 +22,6 @@ export class UsersController {
     create(@Body() userDto: CreateUserDto) {
         return this.userService.createUser(userDto)
     }
-    
-    @ApiOperation({summary: 'Updating a user'})
-    @ApiResponse({status: 201, type: User})
-    @UsePipes(ValidationPipe)
-    @Patch()
-    update(@Body() userDto: CreateUserDto) {
-        return this.userService.updateUser(userDto)
-    }
-
 
     @ApiOperation({summary: 'Receiving list of all users'})
     @ApiResponse({status: 200, type: [User]})

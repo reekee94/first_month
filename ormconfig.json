@@ -1,0 +1,15 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "root",
+    "database": "test",
+    "entities": ["UserEntity, RoleEntity, PostEntity, UserRoles, UserToRole"],
+    "migrations": ["src/migrations/*{.ts,.js}"],
+    "migrationsRun": true,
+    "cli": {
+      "migrationsDir": "src/migrations"
+    },
+    "synchronize": false
+  }
